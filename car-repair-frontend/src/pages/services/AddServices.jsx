@@ -18,12 +18,26 @@ const AddService = () => {
 
   return (
     <div>
-      <h2>Add Service</h2>
+      <div className="container mt-5">
+        <div className="card">
+      <div className="card-header"> Add Service</div>
+      
       <form onSubmit={handleSubmit}>
-        <input name="ServiceName" placeholder="Service Name" onChange={handleChange} required />
-        <input name="ServicePrice" placeholder="Service Price" type="number" onChange={handleChange} required />
-        <button type="submit">Add</button>
+        <div className="card-body">
+        <div className="form-group"> <label htmlFor="">Service Name</label>
+        <input className='form-control' name="ServiceName" placeholder="Service Name" onChange={handleChange} required />
+        </div>
+        <label htmlFor="">Service Price</label>
+        <input className='form-control' name="ServicePrice" placeholder="Service Price" type="number" onChange={handleChange} required /> <p></p>
+       </div>
+       <div className="card-footer">
+        <button type="submit" className='btn btn-primary w-100'>Add Service</button>
+     </div>
       </form>
+      </div>
+      </div>
+    
+    
     </div>
   );
 };

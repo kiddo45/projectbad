@@ -23,9 +23,11 @@ const ServiceList = () => {
 
   return (
     <div>
-      <h2>Services</h2>
-      <Link to="/services/add">Add New Service</Link>
-      <table border="1" cellPadding="8">
+      <div className="container mt-5">
+      <h2  className="text-3xl font-bold underline">Services</h2>
+      <Link to="/services/add" className='btn btn-success'>Add New Service</Link>
+      <p></p>
+      <table className='table table-bordered table-striped'>
         <thead>
           <tr>
             <th>ID</th>
@@ -41,13 +43,14 @@ const ServiceList = () => {
               <td>{service.ServiceName}</td>
               <td>${service.ServicePrice}</td>
               <td>
-                <Link to={`/services/edit/${service.ServiceCode}`}>Edit</Link> |{' '}
-                <button onClick={() => deleteService(service.ServiceCode)}>Delete</button>
+                <Link className='btn btn-warning btn-sm' to={`/services/edit/${service.ServiceCode}`}>Edit</Link> |{' '}
+                <button className='btn btn-danger btn-sm' onClick={() => deleteService(service.ServiceCode)}>Delete</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };
