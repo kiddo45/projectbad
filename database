@@ -1,0 +1,34 @@
+CREATE DATABASE IF NOT EXISTS car_repair;
+USE car_repair;
+
+CREATE TABLE Services (
+  ServiceCode INT PRIMARY KEY AUTO_INCREMENT,
+  ServiceName VARCHAR(100),
+  ServicePrice DECIMAL(10, 2)
+);
+
+CREATE TABLE Car (
+  PlateNumber VARCHAR(20) PRIMARY KEY,
+  Type VARCHAR(50),
+  Model VARCHAR(50),
+  ManufacturingYear INT,
+  DriverPhone VARCHAR(20),
+  MechanicName VARCHAR(100)
+);
+
+CREATE TABLE ServiceRecord (
+  RecordNumber INT PRIMARY KEY AUTO_INCREMENT,
+  PlateNumber VARCHAR(20),
+  ServiceCode INT,
+  ServiceDate DATE,
+  FOREIGN KEY (PlateNumber) REFERENCES Car(PlateNumber),
+  FOREIGN KEY (ServiceCode) REFERENCES Services(ServiceCode)
+);
+
+CREATE TABLE Payment (
+  PaymentNumber INT PRIMARY KEY AUTO_INCREMENT,
+  RecordNumber INT,
+  AmountPaid DECIMAL(10, 2),
+  PaymentDate DATE,
+  FOREIGN KEY (RecordNumber) REFERENCES ServiceRecord(RecordNumber)
+);
